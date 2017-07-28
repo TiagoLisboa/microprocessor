@@ -1,0 +1,16 @@
+operação, regwrite, reg1, reg2, const
+somac, 1, 0, 0, 0 			bug do meu processador, qd inicia o clock ta baixo, ai qd sobe ele muda o indice e n escreve nada no banco
+somac, 1, 0, 0, 5 			n = 5 (numero para o fatorial)
+somac, 2, 0, 0, 1 			fat = 1 (variavel para receber o fatorial)
+somac, 3, 0, 0, 1 			i = 1 (contador do fatorial)
+beq, 0, 3, 1, 9				i == n ? 9 (se o fatorial tiver terminado avança nove linhas)
+soman, 4, 0, 0, 0			x = 0 (contador das multiplicações)
+soman, 5, 2, 0, 0			aux = fat (o auxiliar começa como o fatorial)
+soman, 5, 5, 2, 0			aux = aux + fat (o auxiliar vai se somando ao fatorial multiplas vezes, simulando uma multiplicação)
+somac, 4, 4, 0, 1			x = x + 1 (contador para verificar se a multiplicação terminou)
+bne, 0, 4, 3, -2			x != i ? -2 (se a multiplicação não tiver terminado volta duas linhas)
+somac, 3, 3, 0, 1			i = i + 1 (incremento do contador do fatorial)
+soman, 2, 0, 5, 0			fat = aux (atualiza o valor do fatorial)
+jmp, 0, 0, 0, -8			(regride oito linhas)
+or, 0, 2, 0, 0				("impressão")
+jmp, 0, 0, 0, -1				("Volta para a impressão")
